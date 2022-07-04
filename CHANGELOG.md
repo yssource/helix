@@ -1,6 +1,6 @@
 # 22.07 (UNRELEASED)
 
-Compare checkpoint: https://github.com/helix-editor/helix/compare/21d12e1487f98b5dea93eba7bdc53d303932f990...master
+Compare checkpoint: https://github.com/helix-editor/helix/compare/e58d28a9728fd5d451c98c48bd20c57fb9eec7dc...master
 
 ---
 
@@ -10,9 +10,17 @@ Breaking changes:
 
 Features:
 
+- Add an integration testing harness (#2359)
+- Indent guides (#1796)
+- Cursorline (#2170, fde9e03)
+- Select all instances of the symbol under the cursor (`<space>h`) (#2738)
+- A picker for document and workspace LSP diagnostics (`<space>g`/`<space>G`) (#2013)
+- Allow styling the mode indicator per-mode (#2676)
+
 Commands:
 
 - `:insert-output` and `:append-output` which insert/append output from a shell command (#2589)
+- The `t` textobject (`]t`/`[t`/`mit`/`mat`) for navigating tests (#2807)
 
 Usability improvements and fixes:
 
@@ -23,7 +31,7 @@ Usability improvements and fixes:
 - Be more defensive about LSP URI conversions (6de6a3e, 378f438)
 - Ignore SendErrors when grammar builds fail (#2641)
 - Append `set_line_ending` to document history (#2649)
-- Use last prompt entry when empty (b14c258)
+- Use last prompt entry when empty (b14c258, #2870)
 - Do not add extra line breaks in markdown lists (#2689)
 - Disable dialyzer by default for ElixirLS (#2710)
 - Refactor textobject node capture (#2741)
@@ -37,6 +45,26 @@ Usability improvements and fixes:
 - Ensure `:quit` and `:quit!` take no arguments (#2654)
 - Fix crash due to cycles when replaying macros (#2647)
 - Pass LSP FormattingOptions (#2635)
+- Prevent showing colors when the health-check is piped (#2836)
+- Use character indexing for mouse selection (#2839)
+- Display the highest severity diagnostic for a line in the gutter (#2835)
+- Default the ruler color to red background (#2669)
+- Make `move_vertically` aware of tabs and wide characters (#2620)
+- Enable shellwords for Windows (#2767)
+- Add history suggestions to global search (#2717)
+- Fix the scrollbar's length proportional to total menu items (#2860)
+- Reset terminal modifiers for diagnostic text (#2861, #2900)
+- Redetect indents and line-endings after a Language Server replaces the document (#2778)
+- Check selection's visible width when copying on mouse click (#2711)
+- Fix edge-case in tree-sitter `expand_selection` command (#2877)
+- Add a single-width left margin for the completion popup (#2728)
+- Right-align the scrollbar in the completion popup (#2754)
+- Fix recursive macro crash and empty macro lockout (#2902)
+- Fix backwards character deletion on other whitespaces (#2855)
+- Add search and space/backspace bindings to view modes (#2803)
+- Add `--vsplit` and `--hsplit` CLI arguments for opening in splits (#2773)
+- Sort themes, languages and files inputs by score and name (#2675)
+- Highlight entire rows in (#2939)
 
 Themes:
 
@@ -45,12 +73,22 @@ Themes:
 - Fix `catpuccin` `ui.popup` theme (#2644)
 - Update selection style of `night_owl` (#2668)
 - Fix spelling of `catppuccin` theme (#2713)
+- Update `base16_default`'s `ui.menu` (#2794)
+- Add `noctis_bordo` (#2830)
+- Add `acme` (#2876)
+- Add `meliora` (#2884, #2890)
+- Add cursorline scopes to various themes (33d287a, #2892, #2915, #2916, #2918, #2927, #2925, #2938)
+- Add mode colors to various themes (#2926, #2933, #2929)
+- Add `nord_light` (#2908)
+- Update `night_owl` (#2929)
 
 LSP:
 
 - V (#2526)
 - Prisma (#2703)
 - Clojure (#2780)
+- WGSL (#2872)
+- Elvish (#2948)
 
 New languages:
 
@@ -60,6 +98,8 @@ New languages:
 - OpenSCAD (#2680)
 - Prisma (#2703)
 - Clojure (#2780)
+- Starlark (#2903)
+- Elvish (#2948)
 
 Updated languages and queries:
 
@@ -68,6 +108,22 @@ Updated languages and queries:
 - CPON (#2643)
 - Textobjects queries for Erlang, Elixir, Gleam (#2661)
 - Capture rust closures as function textobjects (4a27e2d)
+- Heex (#2800)
+- Add `<<=` operator highlighting for Rust (#2805)
+- Fix comment injection in JavaScript/TypeScript (#2763)
+- Nickel (#2859)
+- Add `Rakefile` and `Gemfile` to Ruby file-types (#2875)
+- Erlang (#2910)
+- Markdown (#2910)
+- Bash (#2910)
+- Rust (#2910)
+- Edoc (#2910)
+- HTML (#2910)
+- Make (#2910)
+- TSQ (#2910)
+- git-commit (#2910)
+- Use default fallback for Python indents (9ae70cc)
+- Add Haskell LSP roots (#2954)
 
 Packaging:
 
