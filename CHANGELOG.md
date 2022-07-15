@@ -1,12 +1,13 @@
 # 22.07 (UNRELEASED)
 
-Compare checkpoint: https://github.com/helix-editor/helix/compare/e58d28a9728fd5d451c98c48bd20c57fb9eec7dc...master
+Compare checkpoint: https://github.com/helix-editor/helix/compare/bcacc703d737300e3e315b0b8a4716cdf306da87...master
 
 ---
 
 Breaking changes:
 
 - Special keymap names for `<`, `>`, `+`, `;` and `%` have been replaced with those literal characters (#2677)
+- `A-Left` and `A-Right` have become `C-Left` and `C-Right` for word-wise motion (#2500)
 
 Features:
 
@@ -14,13 +15,16 @@ Features:
 - Indent guides (#1796)
 - Cursorline (#2170, fde9e03)
 - Select all instances of the symbol under the cursor (`<space>h`) (#2738)
-- A picker for document and workspace LSP diagnostics (`<space>g`/`<space>G`) (#2013)
+- A picker for document and workspace LSP diagnostics (`<space>g`/`<space>G`) (#2013, #2984)
 - Allow styling the mode indicator per-mode (#2676)
+- Live preview for the theme picker (#1798)
 
 Commands:
 
 - `:insert-output` and `:append-output` which insert/append output from a shell command (#2589)
 - The `t` textobject (`]t`/`[t`/`mit`/`mat`) for navigating tests (#2807)
+- `C-Backspace` and `C-Delete` for word-wise deletion in prompts and pickers (#2500)
+- `A-Delete` for forward word-wise deletion in insert mode (#2500)
 
 Usability improvements and fixes:
 
@@ -65,6 +69,13 @@ Usability improvements and fixes:
 - Add `--vsplit` and `--hsplit` CLI arguments for opening in splits (#2773)
 - Sort themes, languages and files inputs by score and name (#2675)
 - Highlight entire rows in (#2939)
+- Fix backwards selection duplication widening bug (#2945, #3024)
+- Skip serializing Option type DAP fields (44f5963)
+- Fix required `cwd` field in DAP `RunTerminalArguments` type (85411be)
+- Add LSP `workspace/applyEdit` to client capabilities (#3012)
+- Respect count for repeating motion (#3057)
+- Respect count for selecting next/previous match (#3056)
+- Respect count for tree-sitter motions (#3058)
 
 Themes:
 
@@ -77,10 +88,13 @@ Themes:
 - Add `noctis_bordo` (#2830)
 - Add `acme` (#2876)
 - Add `meliora` (#2884, #2890)
-- Add cursorline scopes to various themes (33d287a, #2892, #2915, #2916, #2918, #2927, #2925, #2938)
+- Add cursorline scopes to various themes (33d287a, #2892, #2915, #2916, #2918, #2927, #2925, #2938, #2962, #3054)
 - Add mode colors to various themes (#2926, #2933, #2929)
 - Add `nord_light` (#2908)
 - Update `night_owl` (#2929)
+- Update `autumn` (2e70985, 936ed3a)
+- Update `one_dark` (#3011)
+- Add `noctis` (#3043)
 
 LSP:
 
@@ -89,6 +103,8 @@ LSP:
 - Clojure (#2780)
 - WGSL (#2872)
 - Elvish (#2948)
+- Idris (#2971)
+- Fortran (#3025)
 
 New languages:
 
@@ -100,6 +116,8 @@ New languages:
 - Clojure (#2780)
 - Starlark (#2903)
 - Elvish (#2948)
+- Fortran (#3025)
+- Ungrammar (#3048)
 
 Updated languages and queries:
 
@@ -120,14 +138,21 @@ Updated languages and queries:
 - Edoc (#2910)
 - HTML (#2910)
 - Make (#2910)
-- TSQ (#2910)
+- TSQ (#2910, #2960)
 - git-commit (#2910)
 - Use default fallback for Python indents (9ae70cc)
 - Add Haskell LSP roots (#2954)
+- Ledger (#2936, #2988)
+- Nickel (#2987)
+- JavaScript (#2961)
+- TypeScript (#2961)
+- GLSL (#3051)
 
 Packaging:
 
-- Add `rust-analyzer` to nix flake devShell (#2739)
+- Add `rust-analyzer` to Nix flake devShell (#2739)
+- Add cachix information to the Nix flake (#2999)
+- Pass makeWrapperArgs to wrapProgram in the Nix flake (#3003)
 
 # 22.05 (2022-05-28)
 
